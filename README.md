@@ -4,16 +4,22 @@ Some utilities to make my coding sessions easier.
 ## Download and Use
 Currently I have no idea how to create a maven repository, so heres how to use it as a local file.
 - Download the jar dependency from [here](https://github.com/SansSerif1/random-java-utilities/releases/tag/1.0)
-- Add this to your pom:\
-`<dependencies>`\
-        `<dependency>`\
-            `<groupId>me.sansserif</groupId>`\
-            `<artifactId>JavaAppUtilities</artifactId>`\
-            `<version>1.0</version>`\
-            `<scope>system</scope>`\
-            `<systemPath>Path/To/The/JavaAppUtilities.jar</systemPath>`\
-        `</dependency>`\
-    `</dependencies>`
+- Add this to your pom:
+```
+<repositories>
+        <repository>
+                <id>jitpack.io</id>
+                <url>https://jitpack.io</url>
+        </repository>
+</repositories>
+<dependencies>
+        <dependency>
+                <groupId>com.github.SansSerif1</groupId>
+                <artifactId>random-java-utilities</artifactId>
+                <version>1.0</version>
+        </dependency>
+</dependencies>
+```
 - profit
 
 ## License
