@@ -31,6 +31,10 @@ This allows you to simply check length of given arguments, data types, get those
 ![Args Overview 2](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Args_2.png?raw=true)\
 *TIP: Forced methods mean that the programs stops, if the conditions arent true*
 
+### Console
+A little class for formatting output. Includes log4j-like logger instances, and different log levels like warning, success, error and normal log.\
+![Console Overview 1](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Console_1.png?raw=true)
+
 ### Files
 Some functions to return path to jar file, enclosing folder, File.separator() under a new name, and a method to copy resources.\
 ![Files Overview 1](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Files_1.png?raw=true)
