@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Console {
-    private static String thrname;
+    private String thrname;
     public Console(String threadname) {
         thrname = threadname;
     }
