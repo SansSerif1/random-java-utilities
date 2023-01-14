@@ -7,16 +7,28 @@ import java.io.IOException;
 import java.security.ProtectionDomain;
 
 public class Files {
-    public static File getExecutableFolder(ProtectionDomain main_class_protectiondomain) {
-        return new File(main_class_protectiondomain.getCodeSource().getLocation().getPath()).getParentFile();
+    public static File getExecutableFolder() {
+        ProtectionDomain domain = null;
+        try {
+            domain = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName()).getProtectionDomain();
+        } catch (ClassNotFoundException ignored) {}
+        return new File(domain.getCodeSource().getLocation().getPath()).getParentFile();
     }
-    public static File getExecutableFile(ProtectionDomain main_class_protectiondomain) {
-        return new File(main_class_protectiondomain.getCodeSource().getLocation().getPath());
+    public static File getExecutableFile() {
+        ProtectionDomain domain = null;
+        try {
+            domain = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName()).getProtectionDomain();
+        } catch (ClassNotFoundException ignored) {}
+        return new File(domain.getCodeSource().getLocation().getPath());
     }
     public static String slash() {
         return File.separator;
     }
-    public static void copyResourceToFile(String resourcename, File outputfile, ClassLoader main_class_classLoader) throws IOException {
-        FileUtils.copyInputStreamToFile(main_class_classLoader.getResourceAsStream(resourcename), outputfile);
+    public static void copyResourceToFile(String resourcename, File outputfile) throws IOException {
+        ClassLoader classloader = null;
+        try {
+            classloader = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName()).getClassLoader();
+        } catch (ClassNotFoundException ignored) {}
+        FileUtils.copyInputStreamToFile(classloader.getResourceAsStream(resourcename), outputfile);
     }
 }

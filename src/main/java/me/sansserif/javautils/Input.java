@@ -20,10 +20,7 @@ public class Input {
                     break;
             }
         }
-        if (answer.equals("y"))
-            return true;
-        else
-            return false;
+        return answer.equals("y");
     }
     public static boolean yesNoDialogForced(String question) {
         String answer = "x";
