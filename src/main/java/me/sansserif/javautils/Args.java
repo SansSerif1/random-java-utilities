@@ -99,4 +99,10 @@ public class Args {
             System.exit(1);
         }
     }
+    public int length() {
+        return arguments.length;
+    }
+    public String getAsString() {
+        return String.join(" ", arguments);
+    }
 }
