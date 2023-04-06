@@ -14,7 +14,7 @@ Some utilities to make my coding sessions easier.
         <dependency>
                 <groupId>com.github.SansSerif1</groupId>
                 <artifactId>random-java-utilities</artifactId>
-                <version>1.0</version>
+                <version>2.7</version>
         </dependency>
 </dependencies>
 ```
