@@ -35,7 +35,7 @@ public class Database implements Runnable {
     public void run() {
         while (Duration.between(candie, LocalDateTime.now()).isNegative()) {
             try {
-                Thread.sleep(Duration.between(LocalDateTime.now(), candie));
+                Thread.sleep(Duration.between(LocalDateTime.now(), candie).toMillis());
             } catch (Exception ignored) {}
         }
         try {
