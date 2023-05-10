@@ -19,6 +19,11 @@ public class Database implements Runnable {
 
         current = DriverManager.getConnection(url);
         getConn();
+        Runtime.getRuntime().addShutdownHook(new Thread(this::terminate));
+    }
+    public void terminate() {
+        candie = LocalDateTime.MIN;
+        renewer.interrupt();
     }
     public Connection getConn() throws SQLException {
         candie = LocalDateTime.now().plus(timeout);
