@@ -4,10 +4,6 @@ import java.time.Duration;
 
 public class Time {
     public static String durationToTimeUnits(Duration duration) {
-        long days = duration.toDays(),
-                hours = duration.toHours() - days * 24,
-                minutes = duration.toMinutes() - hours * 60,
-                seconds = duration.toSeconds() - minutes * 60;
-        return days + "d " + hours + "h " + minutes + "min " + seconds + "s";
+        return duration.toDaysPart() + "d " + duration.toHoursPart() + "h " + duration.toMinutesPart() + "min " + duration.toSecondsPart() + "s";
     }
 }
