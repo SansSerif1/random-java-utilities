@@ -11,7 +11,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MullvadProxy {
@@ -46,18 +45,36 @@ public class MullvadProxy {
                 servers.add(new Server(current.getString("country_name"), current.getBoolean("owned"), current.getString("socks_name")));
         }
     }
-    public List<Proxy> getProxies(Optional<String> country_name, Optional<Boolean> owned) {
+    public List<Proxy> getProxies(String countryName, Boolean owned) {
         if (servers.isEmpty()) return null;
         return servers.stream()
-                .filter(server -> country_name.isEmpty() || country_name.get().equalsIgnoreCase(server.getCountry()))
-                .filter(server -> owned.isEmpty() || owned.get().equals(server.isOwned()))
+                .filter(server -> countryName == null || countryName.equalsIgnoreCase(server.getCountry()))
+                .filter(server -> owned == null || owned.equals(server.isOwned()))
                 .map(server -> new Proxy(Proxy.Type.SOCKS, new InetSocketAddress(server.getSocksUrl(), 1080)))
                 .toList();
     }
-    public Proxy getRandomProxy(Optional<String> country_name, Optional<Boolean> owned) {
+    public List<Proxy> getProxies(String countryName) {
+        return getProxies(countryName, null);
+    }
+    public List<Proxy> getProxies(Boolean owned) {
+        return getProxies(null, owned);
+    }
+    public List<Proxy> getProxies() {
+        return getProxies(null, null);
+    }
+    public Proxy getRandomProxy(String countryName, Boolean owned) {
         if (servers.isEmpty()) return null;
-        List<Proxy> proxies = getProxies(country_name, owned);
+        List<Proxy> proxies = getProxies(countryName, owned);
         return proxies.get(ThreadLocalRandom.current().nextInt(0, proxies.size()));
+    }
+    public Proxy getRandomProxy(String countryName) {
+        return getRandomProxy(countryName, null);
+    }
+    public Proxy getRandomProxy(Boolean owned) {
+        return getRandomProxy(null, owned);
+    }
+    public Proxy getRandomProxy() {
+        return getRandomProxy(null, null);
     }
     public List<String> getCountries() {
         return servers.stream().map(Server::getCountry).distinct().sorted().toList();

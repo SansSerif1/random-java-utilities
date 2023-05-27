@@ -1,12 +1,12 @@
 package me.sansserif.javautils;
 
+import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 public class JSON {
@@ -60,11 +60,7 @@ public class JSON {
     public boolean save() {
         try {
             if (!file.exists()) file.createNewFile();
-            FileWriter fileWriter = new FileWriter(file);
-            PrintWriter printWriter = new PrintWriter(fileWriter);
-            printWriter.println(json);
-            printWriter.close();
-            fileWriter.close();
+            FileUtils.writeStringToFile(file, json.toString(), StandardCharsets.UTF_8);
             console.success("Saved.");
             return true;
         } catch (IOException err) {

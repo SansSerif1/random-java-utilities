@@ -4,28 +4,28 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Console {
-    private String thrname;
-    public Console(String threadname) {
-        thrname = threadname;
+    public final String name;
+    public Console(String name) {
+        this.name = name;
     }
 
     public void starting() {
-        System.out.println(timestamp() + threadname(thrname) + TextColor.white("Starting ..."));
+        System.out.println(timestamp() + threadname(name) + TextColor.white("Starting ..."));
     }
     public void started() {
-        System.out.println(timestamp() + threadname(thrname) + TextColor.green("Started!"));
+        System.out.println(timestamp() + threadname(name) + TextColor.green("Started!"));
     }
     public void log(String msg) {
-        System.out.println(timestamp() + threadname(thrname) + "[LOG] " + msg);
+        System.out.println(timestamp() + threadname(name) + "[LOG] " + msg);
     }
     public void success(String msg) {
-        System.out.println(timestamp() + threadname(thrname) + TextColor.green("[SUCCESS] " + msg));
+        System.out.println(timestamp() + threadname(name) + TextColor.green("[SUCCESS] " + msg));
     }
     public void warning(String msg) {
-        System.out.println(timestamp() + threadname(thrname) + TextColor.yellow("[WARNING] " + msg));
+        System.out.println(timestamp() + threadname(name) + TextColor.yellow("[WARNING] " + msg));
     }
     public void error(String msg) {
-        System.out.println(timestamp() + threadname(thrname) + TextColor.red("[ERROR] " + msg));
+        System.out.println(timestamp() + threadname(name) + TextColor.red("[ERROR] " + msg));
     }
 
 
