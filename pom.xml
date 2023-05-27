@@ -6,7 +6,7 @@
 
     <groupId>me.sansserif</groupId>
     <artifactId>JavaAppUtilities</artifactId>
-    <version>2.9</version>
+    <version>3.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
