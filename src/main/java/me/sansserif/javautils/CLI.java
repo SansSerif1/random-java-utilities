@@ -101,15 +101,19 @@ public class CLI implements Runnable {
                 console.warning("Invalid command.");
                 continue;
             }
-            Boolean result = command.get().execute(args);
-            if (result == null) {
-                console.warning("This module does not support commands.");
-                continue;
+            try {
+                Boolean result = command.get().execute(args);
+                if (result == null) {
+                    console.warning("This module does not support commands.");
+                    continue;
+                }
+                if (result)
+                    console.success("Command finished.");
+                else
+                    console.warning("Command finished.");
+            } catch (Exception err) {
+                console.warning("Command threw an exception: " + err.getMessage());
             }
-            if (result)
-                console.success("Command finished.");
-            else
-                console.warning("Command finished.");
         }
     }
 
