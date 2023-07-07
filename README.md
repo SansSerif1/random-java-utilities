@@ -1,5 +1,27 @@
 # random-java-utilities
-Some utilities to make my coding sessions easier.
+Some utilities to make my (and possibly your) coding sessions easier.
+
+## Documentation rework
+***___I do not currently have enough time for this, but when I do, I'm going to add everything you need to know to use this package. Until then, you can learn yourself from the source code :)___***
+
+Some of the cool features:
+- a simple CLI with support for custom commands
+- simple logger, functions for colored output
+- simple database connection manager for JDBC
+- **proxy tools for internet scraping.** (SOCKS5-only) 
+
+Manager for loading and selecting proxies (by country and city) and selectable sources of these proxies.
+Available sources:
+- [Mullvad](https://mullvad.net/en) (Requires connection to one of their VPN servers)
+- [TheSpeedX's proxies](https://github.com/TheSpeedX/PROXY-List)
+- [ShiftyTR's proxies](https://github.com/ShiftyTR/Proxy-List)
+- [Jetkai's proxies](https://github.com/jetkai/proxy-list)
+- [Monosans' proxies](https://github.com/monosans/proxy-list)
+- [Hookzof's proxies](https://github.com/hookzof/socks5_list)
+- A custom one of yours, can be added by implementing a specific interface.
+
+Cya!
+
 
 ## Download and Use
 - Add this to your pom:
@@ -14,42 +36,8 @@ Some utilities to make my coding sessions easier.
         <dependency>
                 <groupId>com.github.SansSerif1</groupId>
                 <artifactId>random-java-utilities</artifactId>
-                <version>2.7</version>
+                <version>[VERSION]</version>
         </dependency>
 </dependencies>
 ```
 - profit
-
-## License
-None, do whatever you want with this, its just a bunch of copied code mixed together.
-
-## Features
-
-### Args Manager
-This allows you to simply check length of given arguments, data types, get those arguments, and even mandatory checker, that stops the program if the given argument is not, what you wanted it to be (for example terms of service agreement)\
-![Args Overview 1](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Args_1.png?raw=true)\
-![Args Overview 2](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Args_2.png?raw=true)\
-*TIP: Forced methods mean that the programs stops, if the conditions arent true*
-
-### Console
-A little class for formatting output. Includes log4j-like logger instances, and different log levels like warning, success, error and normal log.\
-![Console Overview 1](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Console_1.png?raw=true)
-
-### Files
-Some functions to return path to jar file, enclosing folder, File.separator() under a new name, and a method to copy resources.\
-![Files Overview 1](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Files_1.png?raw=true)
-
-### Input
-Bunch of question dialogs, for example Y/N, Y/N but only Y lets you continue, dialog with custom defined responses, or dialog with any response, great for asking the wonderful end-user their name!\
-![Input Overview 1](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Input_1.png?raw=true)\
-![Input Overview 2](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/Input_2.png?raw=true)
-
-### OS
-Literally copy of Apache commons SystemUtils, but under a new name with one method lol.\
-![OS Overview 1](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/OS_1.png?raw=true)
-![OS Overview 2](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/OS_2.png?raw=true)
-
-### TextColor
-Allows you to make the boring terminal output colored! Needs a terminal with ASCII colors support.
-![TextColor Overview 1](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/TextColor_1.png?raw=true)\
-![TextColor Overview 2](https://github.com/SansSerif1/random-java-utilities/blob/main/readme_images/TextColor_2.png?raw=true)
