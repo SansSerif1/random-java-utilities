@@ -3,7 +3,6 @@ package me.sansserif.javautils.proxytools;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
@@ -28,10 +27,7 @@ public class ServerManager {
 
     public List<Server> getServers(@NotNull String countryCode, @NotNull String city) throws IllegalStateException {
         if (servers.isEmpty()) throw new IllegalStateException("Not loaded.");
-        return servers.stream()
-                .filter(server -> countryCode.isEmpty() || server.countryCode().contains(countryCode))
-                .filter(server -> city.isEmpty() || server.city().contains(city))
-                .toList();
+        return servers.stream().filter(server -> countryCode.isEmpty() || server.countryCode().contains(countryCode)).filter(server -> city.isEmpty() || server.city().contains(city)).toList();
     }
 
     public int load(boolean reset) {
@@ -56,10 +52,17 @@ public class ServerManager {
         servers.clear();
     }
 
-    public static HashMap<String, String> getCountries() {
+    public static HashMap<String, String> getCountriesByCode() {
         HashMap<String, String> countries = new HashMap<>();
         for (String countryCode : Locale.getISOCountries())
             countries.put(countryCode, new Locale("", countryCode).getDisplayCountry());
+        return countries;
+    }
+
+    public static HashMap<String, String> getCountriesByName() {
+        HashMap<String, String> countries = new HashMap<>();
+        for (String countryCode : Locale.getISOCountries())
+            countries.put(new Locale("", countryCode).getDisplayCountry(), countryCode);
         return countries;
     }
 
@@ -68,28 +71,15 @@ public class ServerManager {
                 .callTimeout(Duration.ofSeconds(15))
                 .proxy(proxy)
                 .build()
-                .newCall(
-                        new Request.Builder()
-                                .url("https://am.i.mullvad.net/json")
-                                .get()
-                                .build()
-                );
-
-        JSONObject json;
-        try (Response response = call.execute()) {
-            if (!response.isSuccessful() || response.body() == null) throw new Exception();
-            json = new JSONObject(response.body().string());
+                .newCall(new Request.Builder().url("https://am.i.mullvad.net/json").get().build());
+        String raw = ServerService.getValidResponse(call);
+        JSONObject connectionInfoJson;
+        try {
+            assert raw != null;
+            connectionInfoJson = new JSONObject(raw);
         } catch (Exception err) {
-            throw new Exception("Failed to retrieve connection data.");
+            throw new Exception("Failure fetching info.");
         }
-
-        return new ConnectionInfo(json.getString("country"),
-                json.isNull("city") ? null : json.getString("city"),
-                json.getString("ip"),
-                json.getFloat("latitude"),
-                json.getFloat("longitude"),
-                json.getString("organization"),
-                json.getJSONObject("blacklisted").getBoolean("blacklisted")
-        );
+        return new ConnectionInfo(connectionInfoJson.getString("country"), connectionInfoJson.isNull("city") ? null : connectionInfoJson.getString("city"), connectionInfoJson.getString("ip"), connectionInfoJson.getFloat("latitude"), connectionInfoJson.getFloat("longitude"), connectionInfoJson.getString("organization"), connectionInfoJson.getJSONObject("blacklisted").getBoolean("blacklisted"));
     }
 }
