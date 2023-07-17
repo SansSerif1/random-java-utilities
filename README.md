@@ -12,13 +12,17 @@ Some of the cool features:
 
 Manager for loading and selecting proxies (by country and city) and selectable sources of these proxies.
 Available sources:
-- [Mullvad](https://mullvad.net/en) (Requires connection to one of their VPN servers)
-- [TheSpeedX's proxies](https://github.com/TheSpeedX/PROXY-List)
-- [ShiftyTR's proxies](https://github.com/ShiftyTR/Proxy-List)
-- [Jetkai's proxies](https://github.com/jetkai/proxy-list)
-- [Monosans' proxies](https://github.com/monosans/proxy-list)
-- [Hookzof's proxies](https://github.com/hookzof/socks5_list)
-- A custom one of yours, can be added by implementing a specific interface.
+| Service | Servers | Working | Working % |
+| --- | --- | --- | --- |
+| [@monosans](https://github.com/monosans/proxy-list) | 190 | 9 | 4.74% |
+| [spys.one](https://spys.one/en/) | 399 | 25 | 6.27% |
+| [proxyscrape.com](https://proxyscrape.com/free-proxy-list) | 251 | 8 | 3.19% |
+| [@TheSpeedX](https://github.com/TheSpeedX/PROXY-List) | 4860 | 16 | 0.33% |
+| [@jetkai](https://github.com/jetkai/proxy-list) | 347 | 5 | 1.44% |
+| [mullvad.net](https://mullvad.net/en) | 411 | 382 | 92.95% |
+| [@hookzof](https://github.com/hookzof/socks5_list) | 240 | 5 | 2.08% |
+| [@ShiftyTR](https://github.com/ShiftyTR/Proxy-List) | 158 | 2 | 1.27% |
+| Your own! | TBA | TBA | 100%! |
 
 Cya!
 
