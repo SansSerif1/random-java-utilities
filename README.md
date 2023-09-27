@@ -1,9 +1,12 @@
 # random-java-utilities
 Some utilities to make my (and possibly your) coding sessions easier.
 
-## Documentation rework
-***___I do not currently have enough time for this, but when I do, I'm going to add everything you need to know to use this package. Until then, you can learn yourself from the source code :)___***
+## 🚨 EOL 🚨
+GitHub has recently shadowbanned (public couldn't see my profile, but I could) for using a ***mail forwarding service, not a temporary mail service***. That means I now cannot trust GitHub with my projects as they can take these down anytime, so now I'm self-hosting my own maven repo.
 
+___***THIS PACKAGE HAS BEEN FULLY REWRITTEN FROM SCRATCH, NOW BEING WAY FASTER, SMALLER AND OPTIMIZED ON MY OWN MAVEN REPO - CREATE AN ISSUE OR MESSAGE ME SOMEHOW ELSE IF YOU WANT ACCESS***___
+
+## Features
 Some of the cool features:
 - a simple CLI with support for custom commands
 - simple logger, functions for colored output
